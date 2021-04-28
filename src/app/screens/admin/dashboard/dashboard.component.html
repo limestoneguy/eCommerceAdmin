@@ -1,0 +1,14 @@
+<section class="section">
+  <app-nav-bar></app-nav-bar>
+  <div class="product-list">
+    <app-product-card
+      *ngFor="let productDetails of productList"
+      [product_details]="productDetails"
+      (delete_event)="getProducts()"
+    ></app-product-card>
+  </div>
+
+  <div class="fab-container">
+    <app-fab-button></app-fab-button>
+  </div>
+</section>

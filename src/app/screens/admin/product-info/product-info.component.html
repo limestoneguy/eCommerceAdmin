@@ -1,0 +1,26 @@
+<app-nav-bar></app-nav-bar>
+<section class="section">
+  <div class="container">
+    <div class="form-container">
+      <div class="top-bar">
+        <img class="product-pic" src="https://via.placeholder.com/200" alt="">
+        <div class="product-header-details">
+          <input type="text" placeholder="Product Name" class="product-name" [(ngModel)]="product_info.name">
+          <input type="number" placeholder="Quantity" class="product-quantity" [(ngModel)]="product_info.quantity">
+        </div>
+      </div>
+      <textarea class="product-description" placeholder="Product Description" [(ngModel)]="product_info.description"></textarea>
+      <div class="product-details">
+        <div class="display-flex gap--10">
+          <p class="product-quantity">Price: </p>
+          <input type="number" placeholder="Price" class="product-price-details" [(ngModel)]="product_info.price">
+        </div>
+        <div class="display-flex gap--10">
+          <p class="product-quantity">Discount: </p>
+          <input type="number" placeholder="Discount in percentage" class="product-price-details" [(ngModel)]="product_info.discount">
+        </div>
+      </div>
+      <button class="button" (click)="addProduct()">Add Product</button>
+    </div>
+  </div>
+</section>

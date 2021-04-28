@@ -1,0 +1,20 @@
+<div class="card-wrapper">
+  <img class="product-image" [src]="product_details.image_url" alt="" />
+  <div class="product-details" [routerLink]="['/product-info']" [queryParams]="{product_id: product_details.id}" routerLinkActive="router-link-active" >
+    <p class="product-name">
+      {{ product_details.name }}
+    </p>
+    <div class="product-price-container">
+      <p class="product-price">
+        Rs. {{ product_details.price }}
+      </p>
+      <p class="product-discount">
+        {{ product_details.discount }}% Off
+      </p>
+    </div>
+  </div>
+  <div class="quantity-container"></div>
+  <div class="delete-container">
+    <img class="delete-button" src="./assets/svg/delete.svg" alt="" (click)="deleteProduct()">
+  </div>
+</div>

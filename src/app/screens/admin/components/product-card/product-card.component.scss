@@ -1,0 +1,54 @@
+.card-wrapper{
+  padding: clamp(5px, 2vw, 20px);
+  border: 1px solid black;
+  border-radius: 20px;
+  box-shadow: 4px 4px 8px 0px #00000040;
+  display: grid;
+  grid-template-columns: clamp(50px, 10vw, 100px)  minmax(125px, 6fr) 3fr minmax(20px, 2fr);
+  gap: 10px;
+  max-width: 1300px;
+  margin: 0px auto;
+}
+
+.product-image{
+  border-radius: 50%;
+  max-width: 200px;
+  width: clamp(50px, 10vw, 100px);
+}
+
+.product-name{
+  align-self: flex-end;
+  font-weight: bold;
+  font-size: clamp(17px, 4vw, 27px);
+}
+
+.product-details{
+  display: grid;
+  cursor: pointer;
+}
+
+.product-price{
+  color: #27ae60;
+  font-size: clamp(13.5px, 3vw, 18px);
+  font-weight: bold;
+}
+.product-discount{
+  color: #bdbdbd;
+  font-size: clamp(13.5px, 3vw, 18px);
+  font-weight: bold;
+}
+
+.product-price-container{
+  display: flex;
+  gap: 8px;
+}
+
+.delete-container{
+  display: grid;
+  place-items: center;
+}
+
+.delete-button{
+  width: clamp(30px, 5vw, 50px);
+  cursor: pointer;
+}
