@@ -6,6 +6,15 @@
     "createdAt": "date",
     "comments": "Comment[]"
   },
+  "Product": {
+    "id": "int",
+    "name": "string",
+    "description": "string",
+    "discount": "int",
+    "image_url": "https://via.placeholder.com/200",
+    "price": "int",
+    "quantity": "int"
+  },
   "Comment": {
     "body": "string",
     "post": "Post"
