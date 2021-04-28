@@ -9,6 +9,8 @@ import { DashboardService } from 'src/app/services/dashboard.service';
 })
 export class DashboardComponent implements OnInit {
   productList: ProductModel[] = [];
+  pageState = PageState.loading;
+  pageStates = PageState;
 
   constructor(private dashboardService: DashboardService) {}
 
@@ -16,9 +18,13 @@ export class DashboardComponent implements OnInit {
     this.getProducts();
   }
 
-  async getProducts():Promise<void>{
-    this.productList = await this.dashboardService.getAllProducts();
+  async getProducts(): Promise<void> {
+    this.productList = await this.dashboardService.getAllProducts().toPromise();
+    if (this.productList.length < 1) this.pageState = this.pageStates.noProduct;
   }
+}
 
-  async
+enum PageState {
+  loading = 'Loading Products Please Wait',
+  noProduct = 'No Products to be Shown',
 }

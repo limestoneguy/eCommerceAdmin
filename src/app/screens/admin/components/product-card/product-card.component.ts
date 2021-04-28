@@ -8,7 +8,15 @@ import { DashboardService } from 'src/app/services/dashboard.service';
   styleUrls: ['./product-card.component.scss'],
 })
 export class ProductCardComponent implements OnInit {
-  @Input('product_details') product_details: ProductModel;
+  @Input('product_details') product_details: ProductModel = {
+    description: '',
+    discount: 0,
+    id: -1,
+    image_url: '',
+    name: '',
+    price: 0,
+    quantity: '1',
+  };
   @Output('delete_event') delete_event = new EventEmitter<boolean>();
 
   constructor(private dashboardService: DashboardService) {}

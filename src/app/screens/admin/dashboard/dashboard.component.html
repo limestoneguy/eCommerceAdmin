@@ -1,11 +1,16 @@
 <section class="section">
   <app-nav-bar></app-nav-bar>
   <div class="product-list">
-    <app-product-card
-      *ngFor="let productDetails of productList"
-      [product_details]="productDetails"
-      (delete_event)="getProducts()"
-    ></app-product-card>
+    <ng-container *ngIf="productList.length > 0">
+      <app-product-card
+        *ngFor="let productDetails of productList"
+        [product_details]="productDetails"
+        (delete_event)="getProducts()"
+      ></app-product-card>
+    </ng-container>
+    <ng-container *ngIf="productList.length < 1">
+      <h1 class="page-state">{{pageState}}</h1>
+    </ng-container>
   </div>
 
   <div class="fab-container">

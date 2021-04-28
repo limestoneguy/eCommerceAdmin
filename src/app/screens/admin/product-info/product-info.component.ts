@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProductModel } from 'src/app/models/dashboard';
 import { DashboardService } from 'src/app/services/dashboard.service';
 
@@ -22,29 +22,36 @@ export class ProductInfoComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private dashboardService: DashboardService
+    private dashboardService: DashboardService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(async (params) => {
       this.product_id = params['product_id'];
       if (this.product_id) {
-        this.product_info = await this.dashboardService.getProductById(
+        let response = await this.dashboardService.getProductById(
           this.product_id
         );
+        if (response) this.product_info = response;
+        else alert('Product Id is Invalid');
       }
     });
   }
 
   async addProduct() {
-    if (!this.isValidProduct) return alert('Product Info not Valid');
+    if (!this.isValidProduct()) return alert('Product Info not Valid');
     if (this.product_info.id > 0) {
-      const response = await this.dashboardService.modifyProduct(this.product_info);
-      console.log(response)
+      const response = await this.dashboardService.modifyProduct(
+        this.product_info
+      );
+      if (response) this.router.navigate(['/']);
     } else {
       this.product_info.id = Math.floor(Math.random() * 99) + 1;
-      const response = await this.dashboardService.addProduct(this.product_info);
-      console.log(response)
+      const response = await this.dashboardService.addProduct(
+        this.product_info
+      );
+      if (response) this.router.navigate(['/']);
     }
   }
 
